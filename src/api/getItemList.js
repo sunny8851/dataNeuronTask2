@@ -1,8 +1,8 @@
 import axios from "axios";
-
+const apiUrl = process.env.REACT_APP_API_KEY;
 const getItems = ({ setData }) => {
   axios
-    .get("https://dataneuronbackend-z1ot.onrender.com/item/getallitems")
+    .get(`${apiUrl}/item/getallitems`)
     .then((res) => setData(res.data))
     .catch((e) => {
       console.log(e);
@@ -10,7 +10,7 @@ const getItems = ({ setData }) => {
 };
 const updateItem = ({ id, name, description }) => {
   axios
-    .post("https://dataneuronbackend-z1ot.onrender.com/item/update", {
+    .post(`${apiUrl}/item/update`, {
       id: id,
       name: name,
       description: description,
@@ -22,7 +22,7 @@ const updateItem = ({ id, name, description }) => {
 };
 const addItem = ({ onSuccess, name, description }) => {
   axios
-    .post("https://dataneuronbackend-z1ot.onrender.com/item/add", {
+    .post(`${apiUrl}/item/add`, {
       name: name,
       description: description,
     })
